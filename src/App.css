@@ -158,3 +158,22 @@ table > tbody {
   opacity: 0.8;
   font-size: 25px;
 }
+.circle {
+  height: 15px;
+  width: 15px;
+  background-color: #fbb30b;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+.circle-inner {
+  height: 5px;
+  width: 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  /* margin: 10%; */
+  position: absolute;
+  top: 35%;
+  left: 35%;
+}
