@@ -1,16 +1,13 @@
 import * as React from "react";
 import styled from "styled-components";
 
-interface NewGigMenuProps {}
+interface NewGigMenuProps {
+    active?: string,
+    func?: any
+}
 
-const NewGigMenu: React.FunctionComponent<NewGigMenuProps> = () => {
-    const [menuState, setMenuState] = React.useState({
-        active: "Basic Data"
-    })
-
-    const handleMenuChange=(selected: string)=>{
-        setMenuState({active: selected})
-    }
+const NewGigMenu: React.FunctionComponent<NewGigMenuProps> = ({active, func}) => {
+    
   const Container = styled.div`
     display: flex;
     justify-content: center;
@@ -35,19 +32,19 @@ const NewGigMenu: React.FunctionComponent<NewGigMenuProps> = () => {
   `;
   return (
     <Container>
-      <div className="inner-width">
+      <div>
         <div className="first">
-          <p onClick={()=>handleMenuChange("Basic Data")} className="flex cursor-pointer al-center">
-          {menuState.active === "Basic Data" && (<span className="circle">
+          <p onClick={()=>func("Basic Data")} className="flex cursor-pointer al-center">
+          {active === "Basic Data" && (<span className="circle">
               <span className="circle-inner"></span>
             </span>)}
-            <span className={` ${menuState.active === "Basic Data"? "text-yellow": "text-l-gray"} text ml-2`}>Basic Data</span>
+            <span className={` ${active === "Basic Data"? "text-yellow": "text-l-gray"} text ml-2`}>Basic Data</span>
           </p>
-          <p onClick={()=>handleMenuChange("Renumeration")}  className="flex cursor-pointer al-center">
-            {menuState.active === "Renumeration" && (<span className="circle">
+          <p onClick={()=>func("Renumeration")}  className="flex cursor-pointer al-center">
+            {active === "Renumeration" && (<span className="circle">
               <span className="circle-inner"></span>
             </span>)}
-            <span className={` ${menuState.active === "Renumeration"? "text-yellow": "text-l-gray"} text ml-2`}>Renumeration</span>
+            <span className={` ${active === "Renumeration"? "text-yellow": "text-l-gray"} text ml-2`}>Renumeration</span>
           </p>
         </div>
       </div>
