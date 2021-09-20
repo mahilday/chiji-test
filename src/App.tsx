@@ -7,6 +7,7 @@ import Layout from "./Components/Layout";
 import { Switch, Redirect, Route } from "react-router-dom";
 
 import { menu } from "./constants/asidedata";
+import NewGig from "./pages/NewGig";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,8 +27,9 @@ function App() {
           <Switch>
             <Route path="/" exact render={() => <Redirect to="/gigs" />} />
             {menu?.map(({ name, link, Tag }, index) => (
-              <Route path={link} component={() => <Tag titleName={name} />} />
+              <Route exact path={link} component={() => <Tag titleName={name} />} />
             ))}
+            <Route exact path="/gigs/create-gig" component={()=><NewGig titleName="Gigs"/>} />
           </Switch>
         </Layout>
       )}
