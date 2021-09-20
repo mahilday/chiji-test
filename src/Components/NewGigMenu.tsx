@@ -4,6 +4,13 @@ import styled from "styled-components";
 interface NewGigMenuProps {}
 
 const NewGigMenu: React.FunctionComponent<NewGigMenuProps> = () => {
+    const [menuState, setMenuState] = React.useState({
+        active: "Basic Data"
+    })
+
+    const handleMenuChange=(selected: string)=>{
+        setMenuState({active: selected})
+    }
   const Container = styled.div`
     display: flex;
     justify-content: center;
@@ -21,7 +28,6 @@ const NewGigMenu: React.FunctionComponent<NewGigMenuProps> = () => {
       justify-content: space-around;
       & > p {
         & > .text {
-            color:#565D7460;
             font-weight: 600;
         }
       }
@@ -31,17 +37,17 @@ const NewGigMenu: React.FunctionComponent<NewGigMenuProps> = () => {
     <Container>
       <div className="inner-width">
         <div className="first">
-          <p className="flex al-center">
-            <span className="circle">
+          <p onClick={()=>handleMenuChange("Basic Data")} className="flex cursor-pointer al-center">
+          {menuState.active === "Basic Data" && (<span className="circle">
               <span className="circle-inner"></span>
-            </span>
-            <span className="text ml-2">Basic Data</span>
+            </span>)}
+            <span className={` ${menuState.active === "Basic Data"? "text-yellow": "text-l-gray"} text ml-2`}>Basic Data</span>
           </p>
-          <p className="flex al-center">
-            <span className="circle">
+          <p onClick={()=>handleMenuChange("Renumeration")}  className="flex cursor-pointer al-center">
+            {menuState.active === "Renumeration" && (<span className="circle">
               <span className="circle-inner"></span>
-            </span>
-            <span className="text ml-2">Renumeration</span>
+            </span>)}
+            <span className={` ${menuState.active === "Renumeration"? "text-yellow": "text-l-gray"} text ml-2`}>Renumeration</span>
           </p>
         </div>
       </div>
